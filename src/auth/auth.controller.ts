@@ -17,6 +17,7 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../users/users.service';
+import { plainToClass } from 'class-transformer';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -28,10 +29,9 @@ export class AuthController {
 
   @Post('register')
   public async register(@Response() res, @Body() createUserDto: CreateUserDto) {
-    const result = await this.authService.register(createUserDto);
-    if (!result.success) {
-      return res.status(HttpStatus.BAD_REQUEST).json(result);
-    }
+    const result = await this.authService.register(
+      plainToClass(CreateUserDto, createUserDto),
+    );
     return res.status(HttpStatus.OK).json(result);
   }
 

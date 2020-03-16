@@ -7,6 +7,7 @@ import { IUser } from '../users/interfaces/user.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { debug } from 'console';
 import { RegistrationStatus } from './interfaces/registrationStatus.interface';
+import { CreateUserDto } from '../users/dto/createUser.dto';
 
 @Injectable()
 export class AuthService {
@@ -15,26 +16,9 @@ export class AuthService {
     @InjectModel('User') private readonly userModel: PassportLocalModel<IUser>,
   ) {}
 
-  async register(user: IUser) {
-    let status: RegistrationStatus = {
-      success: true,
-      message: 'user register',
-    };
-    await this.userModel.register(
-      new this.userModel({
-        username: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-      }),
-      user.password,
-      err => {
-        if (err) {
-          debug(err);
-          status = { success: false, message: err };
-        }
-      },
-    );
-    return status;
+  async register(createUserDto: CreateUserDto): Promise<CreateUserDto> {
+    const createUser = new this.userModel(createUserDto);
+    return await createUser.save();
   }
 
   createToken(user) {
