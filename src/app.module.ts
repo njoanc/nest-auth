@@ -12,7 +12,7 @@ dotenv.config();
   imports: [
     AuthModule,
     UsersModule,
-    MongooseModule.forRoot(process.env.DB_HOST, {
+    MongooseModule.forRoot('mongodb://localhost/nestauth', {
       useNewUrlParser: true,
     }),
   ],
