@@ -89,5 +89,18 @@
   },
   "engines": {
     "node": "10.16.0"
-  }
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njoanc/nest-auth.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/njoanc/nest-auth/issues"
+  },
+  "homepage": "https://github.com/njoanc/nest-auth#readme"
 }
