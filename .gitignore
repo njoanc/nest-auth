@@ -297,7 +297,7 @@ FakesAssemblies/
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
-node_modules/
+
 
 # Typescript v1 declaration files
 typings/
@@ -389,3 +389,4 @@ Temporary Items
 # Local
 docker-compose.yml
 dist
+node_modules/
