@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
+    "start": "main.ts",
     "postinstall": "npm run build",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
